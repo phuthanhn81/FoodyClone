@@ -1,0 +1,5 @@
+npm install react-native-vector-icons
+npm install --save react-native-autocomplete-input
+npm install redux react-redux
+npm install @reduxjs/toolkit
+npm install redux-saga
