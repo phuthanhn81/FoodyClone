@@ -128,4 +128,58 @@ export default StyleSheet.create({
       backgroundColor: "white",
     };
   },
+
+  viewBottomTabs: () => {
+    return {
+      flexDirection: "row",
+      margin: 10,
+      justifyContent: "space-between",
+    };
+  },
+
+  viewDishes: () => {
+    return {
+      flexDirection: "row",
+      paddingHorizontal: 5,
+      alignItems: "center",
+      borderBottomWidth: 1.8,
+      borderColor: "#dcdcdc",
+      paddingVertical: 10,
+    };
+  },
+
+  viewCart: () => {
+    return {
+      flexDirection: "row",
+      position: "absolute",
+      bottom: 10,
+      zIndex: 1,
+    };
+  },
+
+  viewCartBtn: () => {
+    return {
+      flexDirection: "row",
+      justifyContent: "center",
+      width: "100%",
+    };
+  },
+
+  CartButton: () => {
+    return {
+      flexDirection: "row",
+      backgroundColor: "black",
+      padding: 10,
+      borderRadius: 30,
+      width: 300,
+    };
+  },
+
+  CartText: () => {
+    return {
+      color: "white",
+      fontSize: 15,
+      alignSelf: "center",
+    };
+  },
 });

@@ -1,12 +1,7 @@
-import { Provider } from "react-redux";
+import React from "react";
 
-import Home from "./screens/Home";
-import storeToolkit from "./redux/configureStoreToolkit";
+import Navigation from "./Navigation";
 
 export default function App() {
-  return (
-    <Provider store={storeToolkit}>
-      <Home />
-    </Provider>
-  );
+  return <Navigation />;
 }

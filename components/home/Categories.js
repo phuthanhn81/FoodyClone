@@ -1,5 +1,7 @@
 import { View, Text, Image, ScrollView } from "react-native";
 
+import React from "react";
+
 import css from "../../css/home/css";
 
 import { images } from "../../data/images";

@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -1,7 +1,13 @@
-import { View, StatusBar, ScrollView } from "react-native";
+import {
+  View,
+  StatusBar,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
+import { Divider } from "react-native-paper";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { React, useEffect } from "react";
 
 import common from "../css/common";
 
@@ -9,11 +15,13 @@ import HeaderTabs from "../components/home/HeaderTabs";
 import SearchBar from "../components/home/SearchBar";
 import Categories from "../components/home/Categories";
 import RestaurantItems from "../components/home/RestaurantItems";
+import BottomTabs from "../components/home/BottomTabs";
 
 import citiesReducer from "../redux/ducks/citiesSlice";
 import AutocompleteResult from "../components/home/AutocompleteResult";
 
-export default function Home() {
+// const navigation -> props đăng kí của Navigation
+export default function Home({ navigation }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +33,11 @@ export default function Home() {
   const queryCities = useSelector((state) => state.queryCities);
 
   return (
-    <View style={common.AndroidSafeArea(StatusBar.currentHeight)}>
+    <KeyboardAvoidingView
+      style={common.AndroidSafeArea(StatusBar.currentHeight)}
+      behavior={"height"}
+      enabled={false}
+    >
       <View style={common.ContainerHeader()}>
         <HeaderTabs />
       </View>
@@ -33,8 +45,10 @@ export default function Home() {
       <AutocompleteResult queryCities={queryCities} />
       <Categories />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <RestaurantItems places={places} />
+        <RestaurantItems places={places} navigation={navigation} />
       </ScrollView>
-    </View>
+      <Divider style={{ borderWidth: 1 }} />
+      <BottomTabs />
+    </KeyboardAvoidingView>
   );
 }

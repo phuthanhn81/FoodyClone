@@ -16,4 +16,10 @@ export default StyleSheet.create({
       padding: 15,
     };
   },
+
+  viewOrderCompleted: () => {
+    return {
+      backgroundColor: "#fff",
+    };
+  },
 });

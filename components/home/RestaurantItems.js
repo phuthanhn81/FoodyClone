@@ -1,13 +1,28 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+import React from "react";
+
 import css from "../../css/home/css";
 
-export default function RestaurantItems(props) {
+export default function RestaurantItems({ navigation, ...props }) {
   return (
     <>
       {props.places.map((place, index) => (
-        <TouchableOpacity key={place.id} activeOpacity={0.9}>
+        <TouchableOpacity
+          key={place.id}
+          activeOpacity={0.9}
+          onPress={() =>
+            navigation.navigate("RestaurantDetail", {
+              placeid: place.id,
+              name: place.name,
+              photoUrl: place.photoUrl,
+              phone: place.phone,
+              rating: place.rating,
+              review: place.review,
+            })
+          }
+        >
           <View style={css.viewPlaces()}>
             <RestaurantImage image={place.photoUrl} />
             <RestaurantInfo
