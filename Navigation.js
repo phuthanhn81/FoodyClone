@@ -1,6 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { navigationRef } from "./NavigationService";
 
 import { Provider } from "react-redux";
 import storeToolkit from "./redux/configureStoreToolkit";
@@ -8,6 +9,8 @@ import storeToolkit from "./redux/configureStoreToolkit";
 import Home from "./screens/Home";
 import RestaurantDetail from "./screens/RestaurantDetail";
 import OrderCompleted from "./screens/OrderCompleted";
+import Login from "./screens/Login";
+import SignUp from "./screens/SignUp";
 
 export default function Navigation() {
   const Stack = createStackNavigator();
@@ -18,8 +21,10 @@ export default function Navigation() {
 
   return (
     <Provider store={storeToolkit}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator initialRouteName="Login" screenOptions={screenOptions}>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
           <Stack.Screen name="OrderCompleted" component={OrderCompleted} />

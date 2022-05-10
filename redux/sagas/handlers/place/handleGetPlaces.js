@@ -19,7 +19,7 @@ function* handleGetPlaces(action) {
 
     yield put(placesReducer.actions.setPlaces(data));
   } catch (error) {
-    console.log("handleGetPlaces");
+    console.log(error);
   }
 }
 
@@ -118,11 +118,13 @@ function* handleRemoveCart(action) {
 }
 
 function* handleOrdersCart(action) {
+  // yield(): Có nghĩa là chạy tuần tự khi nào trả ra kết quả mới thực thi tiếp
   try {
     let cart = yield select((state) => state.cart);
+    yield put(displayReducer.actions.setDisplay(cart.dishes));
 
     let order = {
-      Account: 1,
+      Account: -1,
     };
 
     let orderDetail = cart.dishes.map((dish) => {
@@ -138,7 +140,6 @@ function* handleOrdersCart(action) {
     const response = yield call(requestOrdersCart, order, orderDetail);
     const { status } = response;
     yield put(resultReducer.actions.setResult(status));
-    yield put(displayReducer.actions.setDisplay(cart.dishes));
   } catch (error) {
     console.log("handleOrdersCart");
   }

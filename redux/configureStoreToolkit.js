@@ -10,6 +10,8 @@ import cartReducer from "./ducks/cartSlice";
 import resultReducer from "./ducks/resultSlice";
 import loadingReducer from "./ducks/loadingSlice";
 import displayReducer from "./ducks/displaySlice";
+import usersReducer from "./ducks/usersSlice";
+import reportReducer from "./ducks/reportSlice";
 
 import { rootSaga } from "./sagas/rootSaga";
 
@@ -27,6 +29,8 @@ const storeToolkit = configureStore({
     query: queryReducer.reducer,
     placeDishes: placeDishesReducer.reducer,
     cart: cartReducer.reducer,
+    users: usersReducer.reducer,
+    report: reportReducer.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),

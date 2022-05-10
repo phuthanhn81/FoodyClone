@@ -17,6 +17,6 @@ export function* handleSetQueryCities(action) {
 
     yield put(queryCitiesReducer.actions.setQueryCities(result));
   } catch (error) {
-    console.log("handleSetQueryCities");
+    // console.log("handleSetQueryCities");
   }
 }
